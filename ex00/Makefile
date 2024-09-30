@@ -6,11 +6,11 @@
 #    By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/20 12:34:41 by josfelip          #+#    #+#              #
-#    Updated: 2024/09/10 13:09:09 by josfelip         ###   ########.fr        #
+#    Updated: 2024/09/30 15:20:24 by josfelip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = megaphone
+PROGRAM_NAME = zombie
 
 # Target executable
 NAME = ${PROGRAM_NAME}
@@ -27,13 +27,13 @@ ifdef WITH_DEBUG
 endif
 
 # Header files
-INCLUDE_DIR = .
-INCLUDE =
+INCLUDE_DIR = ./include
+INCLUDE = Zombie.hpp
 INCLUDE_PATH = ${addprefix $(INCLUDE_DIR)/, $(INCLUDE)}
 
 # Source files
-SRC_DIR = .
-SRC = megaphone.cpp
+SRC_DIR = ./src
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 SRC_PATH = ${addprefix $(SRC_DIR)/, $(SRC)}
 
 # Object files
@@ -88,8 +88,6 @@ faultcheck: all
 	valgrind -s --track-origins=yes ./${NAME} ${ARGS}
 
 run: all
-	./${NAME} "shhhhh... I think the students are asleep..."
-	./${NAME} Damnit " ! " "Sorry students, I thought this thing was off."
 	./${NAME}
 
 .PHONY: all clean fclean re debug print memcheck faultcheck run
