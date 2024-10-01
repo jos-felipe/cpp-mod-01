@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:22:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/01 19:22:57 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:30:54 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void HumanB::attack(void) {
 
 void HumanB::setWeapon(Weapon& new_weapon)
 {
-	_weapon = &new_weapon;	
+	_weapon = &new_weapon;
 }
