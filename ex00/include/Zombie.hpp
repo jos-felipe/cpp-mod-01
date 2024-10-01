@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 20:34:29 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/30 15:26:20 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:22:52 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define ZOMBIE_HPP
 
 # include <iostream>
-# include <string>
 
 class Zombie {
 

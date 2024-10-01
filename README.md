@@ -1,2 +1,3 @@
-# CPP Module 00
-This first module of C++ is designed to help you understand the specifities of the language when compared to C. Time to dive into Object Oriented Programming!
+# C++ - Module 01
+This module of C++ is designed to help you understand memory allocation, pointers to members,
+references, switch statement. It contains seven exercices from ex00 to ex06.
