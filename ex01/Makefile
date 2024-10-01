@@ -6,11 +6,11 @@
 #    By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/20 12:34:41 by josfelip          #+#    #+#              #
-#    Updated: 2024/09/20 15:14:06 by josfelip         ###   ########.fr        #
+#    Updated: 2024/10/01 13:43:45 by josfelip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = crappy_phonebook
+PROGRAM_NAME = zombie
 
 # Target executable
 NAME = ${PROGRAM_NAME}
@@ -28,12 +28,12 @@ endif
 
 # Header files
 INCLUDE_DIR = ./include
-INCLUDE = Contact.hpp PhoneBook.hpp
+INCLUDE = Zombie.hpp
 INCLUDE_PATH = ${addprefix $(INCLUDE_DIR)/, $(INCLUDE)}
 
 # Source files
 SRC_DIR = ./src
-SRC = Contact.cpp main.cpp PhoneBook.cpp
+SRC = main.cpp  Zombie.cpp  zombieHord.cpp
 SRC_PATH = ${addprefix $(SRC_DIR)/, $(SRC)}
 
 # Object files
@@ -82,14 +82,14 @@ print:
 	@echo "OBJ_PATH: ${OBJ_PATH}"
 
 memcheck: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind.log ./${NAME} < inputs.txt
 	@wget -nc https://raw.githubusercontent.com/jos-felipe/sdk/refs/heads/main/qa/mem_check.sh > /dev/null 2>&1
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind.log ./${NAME} ${ARGS}
 	@sh mem_check.sh
 
 faultcheck: all
-	valgrind -s --track-origins=yes ./${NAME} < inputs.txt
+	valgrind -s --track-origins=yes ./${NAME} ${ARGS}
 
 run: all
-	./${NAME} < inputs.txt
+	./${NAME}
 
 .PHONY: all clean fclean re debug print memcheck faultcheck run

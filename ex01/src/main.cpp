@@ -5,35 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 13:40:37 by josfelip          #+#    #+#             */
-/*   Updated: 2024/09/20 14:51:06 by josfelip         ###   ########.fr       */
+/*   Created: 2024/08/01 22:26:19 by tmina-ni          #+#    #+#             */
+/*   Updated: 2024/10/01 13:45:33 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include <iostream>
+#include "Zombie.hpp"
 
-int main() {
-	PhoneBook phoneBook;
-	std::string command;
+int	main(void) {
+	int	N;
+	int	i;
 
-	while (true) {
-		std::cout << "Please enter a command (ADD, SEARCH or EXIT): ";
-		if (!std::getline(std::cin, command)) {
-			if (std::cin.eof())
-				std::cout << "\nEOF detected. Exiting program." << std::endl;
-			break;
-		}
-		if (command == "ADD") {
-			phoneBook.addContact();
-		} else if (command == "SEARCH") {
-			phoneBook.searchContact();
-		} else if (command == "EXIT") {
-			std::cout << "Goodbye!" << std::endl;
-			break;
-		} else {
-			std::cout << "Invalid command! Please enter ADD, SEARCH or EXIT." << std::endl;
-		}
-	}
+	std::cout << "TEST 1. Lonely horde" << std::endl;
+	N = 1;
+	Zombie	*lonely_horde = zombieHorde(N, "Gru");
+	for (i = 0; i < N; i++)
+		lonely_horde[i].announce();
+	delete [] lonely_horde;
+	std::cout << std::endl;
+
+	std::cout << "TEST 2. Army horde" << std::endl;
+	N = 10;
+	Zombie	*army_horde = zombieHorde(N, "Minion");
+	for (i = 0; i < N; i++)
+		army_horde[i].announce();
+	delete [] army_horde;
+
 	return (0);
 }
