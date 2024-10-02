@@ -12,4 +12,5 @@ include/*
 src/*
 !src/HumanA.cpp
 !src/HumanB.cpp
+!src/main.cpp
 !src/Weapon.cpp
