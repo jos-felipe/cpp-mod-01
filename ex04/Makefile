@@ -6,9 +6,19 @@ MAKE_NO_PRINT = $(MAKE) --no-print-directory
 
 #================================FILES=========================================#
 
-NAME = my_own_sed
+NAME = sed42
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
+
+#================================ARGUMENTS========================================#
+
+FILENAME = ./qa/input.txt
+S1 = brain
+S2 = mind
+
+ARGS = $(FILENAME) $(S1) $(S2)
+OUTPUT = $(FILENAME).replace
+EXPECTED = $(FILENAME).expected
 
 #================================RULES=========================================#
 
@@ -24,8 +34,11 @@ leak: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 run: all
-	./$(NAME) qa/input.txt brain mind
-	@sh qa/is_right.sh
+	./$(NAME) $(ARGS)
+	@sed 's/$(S1)/$(S2)/g' $(FILENAME) > $(EXPECTED)
+	@diff $(OUTPUT) $(EXPECTED) > /dev/null && \
+	echo "\033[32mOK\033[0m" || \
+	echo "\033[31mKO\033[0m"
 
 #================================CLEAN=========================================#
 
@@ -34,7 +47,8 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f qa/input.txt.replace
+	rm -f $(OUTPUT)
+	rm -f $(EXPECTED)
 
 re: fclean all
 
