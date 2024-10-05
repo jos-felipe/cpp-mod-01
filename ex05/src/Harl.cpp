@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 17:39:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/05 18:30:18 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:37:21 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	Harl::complain(std::string level)
 {
-	void		(Harl::*complaintPtr[])() = {
+	HarlFunc	functions[] = {
 		&Harl::_debug, 
 		&Harl::_info, 
 		&Harl::_warning, 
@@ -31,7 +31,7 @@ void	Harl::complain(std::string level)
 	{
 		if (levels[i] == level)
 		{
-			(this->*complaintPtr[i])();
+			(this->*functions[i])();
 			return ;
 		}
 	}

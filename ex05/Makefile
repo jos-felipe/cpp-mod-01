@@ -1,8 +1,7 @@
 #================================FLAGS=========================================#
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
-MAKE_NO_PRINT = $(MAKE) --no-print-directory 
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDE = -I $(HEADER_PATH)
 
 #================================PATHS=========================================#
