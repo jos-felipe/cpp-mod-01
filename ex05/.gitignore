@@ -1,10 +1,12 @@
 /*
 !.gitignore
 !Makefile
-!qa
-!main.cpp
+!include
+!src
 
-qa/*
-!qa/input.txt
-!qa/input.txt.expected
-!qa/is_right.sh
+include/*
+!include/Harl.hpp
+
+src/*
+!src/Harl.cpp
+!src/main.cpp
