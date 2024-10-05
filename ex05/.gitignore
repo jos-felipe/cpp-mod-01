@@ -1,0 +1,10 @@
+/*
+!.gitignore
+!Makefile
+!qa
+!main.cpp
+
+qa/*
+!qa/input.txt
+!qa/input.txt.expected
+!qa/is_right.sh
