@@ -3,14 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 17:39:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/16 01:46:13 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:30:18 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
+
+void	Harl::complain(std::string level)
+{
+	void		(Harl::*complaintPtr[])() = {
+		&Harl::_debug, 
+		&Harl::_info, 
+		&Harl::_warning, 
+		&Harl::_error
+	};
+	std::string	levels[] = {
+		"DEBUG", 
+		"INFO", 
+		"WARNING", 
+		"ERROR"
+	};
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		{
+			(this->*complaintPtr[i])();
+			return ;
+		}
+	}
+	std::cout << "[ UNKNOWN LEVEL ]: " << level << std::endl;
+}
 
 void	Harl::_debug(void)
 {
@@ -45,18 +71,3 @@ void	Harl::_error(void)
 		<< std::endl;
 }
 
-void	Harl::complain(std::string level)
-{
-	void	(Harl::*complaintPtr[])() = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
-	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
-	for (int i = 0; i < 4; i++)
-	{
-		if (level == levels[i])
-		{
-			(this->*complaintPtr[i])();
-			break ;
-		}
-	}
-	return ;
-}

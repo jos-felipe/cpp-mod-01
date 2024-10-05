@@ -27,7 +27,7 @@ $(NAME): $(OBJ) $(HEADER)
 $(SRC_PATH)/%.o: $(SRC_PATH)/%.cpp $(HEADER)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-run: 
+run: all
 	./$(NAME)
 
 leak: all
